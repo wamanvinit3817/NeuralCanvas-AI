@@ -1,0 +1,4 @@
+content_dir : D:\AI ML DL - PRIME\Major Project II - NST\content_data
+style_dir : D:\AI ML DL - PRIME\Major Project II - NST\style_data
+vgg : D:\AI ML DL - PRIME\Major Project II - NSTgg_normalised.pth
+experiment : 'experiment1'
