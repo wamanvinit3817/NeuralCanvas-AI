@@ -33,11 +33,22 @@ class UploadForm(FlaskForm):
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-encoder = VGGEncoder('VGG_normalised.pth').to(device)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+vgg_path = os.path.join(BASE_DIR, "VGG_normalised.pth")
+encoder = VGGEncoder(vgg_path).to(device)
 decoder = Decoder().to(device)
-decoder.load_state_dict(torch.load(
-    'D:/AI ML DL - PRIME/Major Project II - NST/experiment/final_experiment/decoder_final.pth',map_location=device
-))
+
+
+decoder_path = os.path.join(
+    BASE_DIR,
+    "experiment",
+    "final_experiment",
+    "decoder_final.pth"
+)
+
+decoder.load_state_dict(
+    torch.load(decoder_path, map_location=device)
+)
 
 encoder.eval()
 decoder.eval()
